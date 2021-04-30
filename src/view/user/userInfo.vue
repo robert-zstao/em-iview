@@ -42,120 +42,121 @@
 </template>
 
 <script>
-import { formatDates, formatTimeStamp } from '@/utils/formatData'
-import split from '@/components/split/blank'
-import height from '@/components/split/height'
+import { formatDates,formatTimeStamp } from '@/utils/formatData'
+import split  from '@/components/split/blank'
+import height  from '@/components/split/height'
 
-const statusOptions = [
-  { key: '0', display_name: '启用' },
-  { key: '1', display_name: '禁用' }
-]
-const statusOptionsValues = statusOptions.reduce((acc, cur) => {
-  acc[cur.key] = cur.display_name
-  return acc
-}, {})
 
-export default {
-  filters: {
-    handleStatusFilter (type) {
-      return statusOptionsValues[type]
-    },
-    formatDates (date) {
-      return formatDates(date)
-    }
-  },
-  data () {
-    return {
-      positionList: [
-        {
-          value: '',
-          label: '请选择账号状态'
-        },
-        {
-          value: '0',
-          label: '启用'
-        },
-        {
-          value: '1',
-          label: '禁用'
-        }
-      ],
-      queryList: {
-        userId: '',
-        userNumber: '',
-        userName: '',
-        phone: '',
-        state: '',
-        page: 1,
-        limit: 5,
-        sort: '0'
+  const statusOptions = [
+    { key: '0', display_name: '启用' },
+    { key: '1', display_name: '禁用' },
+  ]
+  const statusOptionsValues = statusOptions.reduce((acc, cur) => {
+    acc[cur.key] = cur.display_name
+    return acc
+  }, {})
 
-      },
-      userList: [],
-      userOne: {},
-      listLoading: false,
-      total: 0,
-      columns: [
-        {
-          title: 'Name',
-          key: 'name'
-        },
-        {
-          title: 'Age',
-          key: 'age'
-        },
-        {
-          title: 'Address',
-          key: 'address'
-        }
-      ],
-      data1: [
-        {
-          name: 'John Brown',
-          age: 18,
-          address: 'New York No. 1 Lake Park',
-          date: '2016-10-03'
-        },
-        {
-          name: 'Jim Green',
-          age: 24,
-          address: 'London No. 1 Lake Park',
-          date: '2016-10-01'
-        },
-        {
-          name: 'Joe Black',
-          age: 30,
-          address: 'Sydney No. 1 Lake Park',
-          date: '2016-10-02'
-        },
-        {
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park',
-          date: '2016-10-04'
-        }
-      ]
-    }
-  },
-  components: {
-    split, height
-  },
-  methods: {
-    init () {
-    },
-    handleFilter () {
-      this.queryList.page = 1
-      this.init()
-    }
-  },
-  // 页面加载完成后
-  mounted () {
-    this.init()
-  },
-  // 页面销毁前
-  beforeDestroy () {
-  }
-}
+   export default {
+     filters: {
+       handleStatusFilter(type) {
+         return statusOptionsValues[type]
+       },
+      formatDates(date){
+         return formatDates(date);
+       }
+     },
+          data () {
+              return {
+                  positionList: [
+                      {
+                          value: '',
+                          label: '请选择账号状态'
+                      },
+                      {
+                          value: '0',
+                          label: '启用'
+                      },
+                      {
+                          value: '1',
+                          label: '禁用'
+                      }
+                  ],
+                  queryList:{
+                    userId:'',
+                    userNumber:'',
+                    userName:'',
+                    phone:'',
+                    state:'',
+                    page:1,
+                    limit:5,
+                    sort:'0',
+
+                  },
+                  userList:[],
+                  userOne:{},
+                  listLoading:false,
+                  total:0,
+                  columns: [
+                      {
+                          title: 'Name',
+                          key: 'name'
+                      },
+                      {
+                          title: 'Age',
+                          key: 'age'
+                      },
+                      {
+                          title: 'Address',
+                          key: 'address'
+                      }
+                  ],
+                  data1: [
+                      {
+                           name: 'John Brown',
+                           age: 18,
+                           address: 'New York No. 1 Lake Park',
+                           date: '2016-10-03'
+                      },
+                      {
+                          name: 'Jim Green',
+                          age: 24,
+                          address: 'London No. 1 Lake Park',
+                          date: '2016-10-01'
+                      },
+                      {
+                          name: 'Joe Black',
+                          age: 30,
+                          address: 'Sydney No. 1 Lake Park',
+                          date: '2016-10-02'
+                      },
+                      {
+                          name: 'Jon Snow',
+                          age: 26,
+                          address: 'Ottawa No. 2 Lake Park',
+                          date: '2016-10-04'
+                      }
+                  ]
+              }
+          },
+          components: {
+            split,height
+          },
+          methods: {
+            init () {
+            },
+            handleFilter() {
+              this.queryList.page = 1
+              this.init()
+            }
+          },
+          //页面加载完成后
+          mounted() {
+            this.init()
+          },
+           //页面销毁前
+          beforeDestroy() {
+          }
+      }
 </script>
 
 <style>

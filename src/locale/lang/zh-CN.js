@@ -45,6 +45,7 @@ export default {
   tree_select_page: '树状下拉选择器',
   user: '用户管理',
   userInfo: '用户信息',
+  accountInfo:'账号信息',
   roleInfo: '角色信息',
   userPwd: '密码记录',
   menuInfo: '权限菜单'

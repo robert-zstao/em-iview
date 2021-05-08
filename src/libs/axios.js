@@ -60,6 +60,15 @@ class HttpRequest {
           request: { responseURL: config.url }
         }
       }
+      if (status === 400) {
+        clearToken()
+        router.push({
+          name: 'login'
+        })
+      }
+      if (status === 500) {
+        
+      }
       addErrorLog(errorInfo)
       return Promise.reject(error)
     })

@@ -30,13 +30,13 @@
               </Card>
             </Row>
               <height splitHeight="5"></height>
-       <Row :gutter="24">
-          <Card>
-                <height splitHeight="10"></height>
-              <Table :loading="listLoading" border :columns="columns" :data="data1"></Table>
-               <height splitHeight="20"></height>
-             <Page :total="100" show-sizer />
-          </Card>
+         <Row :gutter="24">
+            <Card>
+                  <height splitHeight="10"></height>
+                <Table :loading="listLoading" border :columns="columns" :data="data1"></Table>
+                 <height splitHeight="20"></height>
+               <Page :total="100" show-sizer />
+            </Card>
         </Row>
   </div>
 </template>
@@ -143,6 +143,7 @@ import height  from '@/components/split/height'
           },
           methods: {
             init () {
+
             },
             handleFilter() {
               this.queryList.page = 1

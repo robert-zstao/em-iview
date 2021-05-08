@@ -1,7 +1,7 @@
 <template>
   <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
-    <FormItem prop="userName">
-      <Input v-model="form.userName" placeholder="请输入用户名">
+    <FormItem prop="username">
+      <Input v-model="form.username" placeholder="请输入用户名">
         <span slot="prepend">
           <Icon :size="16" type="ios-person"></Icon>
         </span>
@@ -14,6 +14,11 @@
         </span>
       </Input>
     </FormItem>
+	<div class="checked" prop="checked">
+    <CheckboxGroup v-model="fruit" @on-change="checkAllGroupChange">
+      <Checkbox label="记住密码"></Checkbox>
+    </CheckboxGroup>
+	</div>
     <FormItem>
       <Button @click="handleSubmit" type="primary" long>登录</Button>
     </FormItem>
@@ -43,15 +48,17 @@ export default {
   data () {
     return {
       form: {
-        userName: 'super_admin',
-        password: ''
+        username: '',
+        password: '',
+        checked:false,
+        fruit: ['']
       }
     }
   },
   computed: {
     rules () {
       return {
-        userName: this.userNameRules,
+        username: this.userNameRules,
         password: this.passwordRules
       }
     }
@@ -59,14 +66,31 @@ export default {
   methods: {
     handleSubmit () {
       this.$refs.loginForm.validate((valid) => {
+       
         if (valid) {
           this.$emit('on-success-valid', {
-            userName: this.form.userName,
+            username: this.form.username,
             password: this.form.password
           })
+           console.log(this.form.fruit)
+           if(this.form.fruit == '记住密码'){
+             //执行缓存
+             
+           }
         }
       })
+    },
+    checkAllGroupChange (data) {
+        this.form.fruit = data
     }
   }
 }
 </script>
+<style>
+  .checked{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: auto;
+  }
+</style>

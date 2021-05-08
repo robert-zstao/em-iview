@@ -5,34 +5,33 @@
 </template>
 
 <script>
-  export default {
-    name : 'split_blank',
-    props: ['blankWidth'], // 父组件传入数据， 数组形式 [ "连雨不知春去","一晴方觉夏深"]
-    data () {
-      return {
-         num:'',
-
-      }
-    },
-    methods: {
-      initDOM() {
-           for(var i = 0; i<this.blankWidth;i++){
-              this.num += '\xa0'
-              console.log("你好"+this.num+"zeds")
-           }
-         },
-    },
-    // 把父组件传入的arr转化成字符串
-    mounted: function () {
-       this.initDOM()
-    },
-    beforeDestroy() {
-
-        },
-    destroyed () {
+export default {
+  name: 'split_blank',
+  props: ['blankWidth'], // 父组件传入数据， 数组形式 [ "连雨不知春去","一晴方觉夏深"]
+  data () {
+    return {
+      num: ''
 
     }
+  },
+  methods: {
+    initDOM () {
+      for(var i = 0; i<this.blankWidth;i++){
+        this.num += '\xa0'
+      }
+    }
+  },
+  // 把父组件传入的arr转化成字符串
+  mounted: function () {
+     this.initDOM()
+  },
+  beforeDestroy () {
+
+      },
+  destroyed () {
+
   }
+}
 </script>
 
 <style>

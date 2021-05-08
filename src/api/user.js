@@ -1,20 +1,21 @@
 import axios from '@/libs/api.request'
 
-export const login = ({ userName, password }) => {
+export const login = ({ username, password }) => {
   const data = {
-    userName,
+    username,
     password
   }
   return axios.request({
-    url: 'login',
-    data,
+    url: 'api/auth/login',
+    params: data,
     method: 'post'
   })
 }
 
+//获取用户信息
 export const getUserInfo = (token) => {
   return axios.request({
-    url: 'get_info',
+    url: 'api/getUserInfo',
     params: {
       token
     },

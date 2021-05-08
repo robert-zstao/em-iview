@@ -13,11 +13,11 @@ import { setToken, getToken } from '@/libs/util'
 
 export default {
   state: {
-    userName: '',
+    userName: 'robert',
     userId: '',
     avatorImgPath: '',
     token: getToken(),
-    access: '',
+    access: 'admin',
     hasGetInfo: false,
     unreadCount: 0,
     messageUnreadList: [],
@@ -74,15 +74,17 @@ export default {
   },
   actions: {
     // 登录
-    handleLogin ({ commit }, { userName, password }) {
-      userName = userName.trim()
+    handleLogin ({ commit }, { username, password }) {
+      username = username.trim()
+      password = password.trim()
       return new Promise((resolve, reject) => {
         login({
-          userName,
+          username,
           password
         }).then(res => {
           const data = res.data
-          commit('setToken', data.token)
+
+          commit('setToken', data.data.token)
           resolve()
         }).catch(err => {
           reject(err)
@@ -105,7 +107,7 @@ export default {
         // resolve()
       })
     },
-    // 获取用户相关信息
+    //获取用户相关信息
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {

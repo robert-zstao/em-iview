@@ -60,6 +60,15 @@ export default [
     },
     children: [
       {
+        path: 'accountInfo',
+        name: 'accountInfo',
+        meta: {
+          icon: 'md-contact',
+          title: '账号管理'
+        },
+        component: () => import('@/view/user/account.vue')
+      },
+      {
         path: 'userInfo',
         name: 'userInfo',
         meta: {
